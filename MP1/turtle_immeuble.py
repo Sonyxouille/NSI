@@ -61,7 +61,7 @@ def etage(x,y,color_rez_chaussee):
     goto(x,y)
     down()
     for i in range(3):
-        if randint(0,1) == 1:
+        if randint(0,2) == 1:
             window_with_barrier(x,y)
         else:
             window(x,y)
