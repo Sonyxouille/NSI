@@ -1,5 +1,5 @@
-from turtle import *
-from random import *
+from turtle import * # type: ignore
+from random import * # type: ignore
 
 setup(1920,1080,0,0)
 
