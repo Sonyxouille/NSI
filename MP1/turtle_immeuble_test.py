@@ -4,7 +4,7 @@ from random import * # type: ignore
 setup(1920,1080,0,0)
 
 colors=['blue','red','green']
-rez_de_chaussee = ['window','door','window']
+rez_de_chaussee = ['window','doors','window']
 
 def rez_chaussee(x,y):
     x_base = x
@@ -31,10 +31,15 @@ def rez_chaussee(x,y):
             window(x,y)
             x += 42.5
             goto(x,y)
-        elif element == 'door':
-            door(x,y,color_rez_chaussee)
-            x += 42.5
-            goto(x,y)
+        elif element == 'doors':
+            if randint(0,1) == 0:
+                door1(x,y,color_rez_chaussee)
+                x += 42.5
+                goto(x,y)
+            else:
+                door2(x,y,color_rez_chaussee)
+                x += 42.5
+                goto(x,y)
     up()
     goto(x_base,y_base)
     x,y = x_base,y_base
@@ -71,7 +76,26 @@ def etage(x,y,color_rez_chaussee):
     x,y = x_base,y_base
     return x,y,color_rez_chaussee
 
-def door(x,y,color_rez_chaussee):
+def door1(x,y,color_rez_chaussee):
+    colors_door = []
+    for color in colors:
+        if color != color_rez_chaussee:
+            colors_door.append(color)
+    fillcolor(choice(colors_door))
+    begin_fill()
+    pencolor('black')
+    goto(x,y+50)
+    pencolor('black')
+    goto(x+30,y+50)
+    pencolor('black')
+    goto(x+30,y)
+    pencolor('black')
+    goto(x,y)
+    x,y = x,y
+    end_fill()
+    return x,y
+
+def door2(x,y,color_rez_chaussee):
     colors_door = []
     for color in colors:
         if color != color_rez_chaussee:
