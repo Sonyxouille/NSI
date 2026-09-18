@@ -187,14 +187,29 @@ def roof2(x,y):
     end_fill()
     return x,y
 
+def roof3(x,y):
+    up()
+    x,y = x,y+60
+    goto(x,y)
+    down()
+    pencolor('black')
+    pensize(6)
+    goto(x-5,y)
+    goto(x+145,y)
+    pensize(1)
+    return x,y
+
 def immeuble(x,y):
     x,y,color_rez_chaussee = rez_chaussee(x,y)
     for i in range(randint(2,4)):
         x,y,color_rez_chaussee = etage(x,y,color_rez_chaussee)
-    if randint(0,1) == 1:
+    roof = randint(0,2)
+    if roof == 1:
         roof1(x,y)
-    else:
+    elif roof == 2:
         roof2(x,y)
+    else:
+        roof3(x,y)
     return x,y
 
 def quartier(x,y):
