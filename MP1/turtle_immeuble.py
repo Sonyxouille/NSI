@@ -159,12 +159,31 @@ def window_with_barrier(x,y):
     x,y = x,y
     return x,y
 
+def roof(x,y):
+    up()
+    x,y = x,y+60
+    goto(x,y)
+    down()
+    fillcolor('brown')
+    begin_fill()
+    goto(x-10,y)
+    goto(x+(140/2),y+30)
+    goto(x+150,y)
+    goto(x,y)
+    end_fill()
+    return x,y
+
 def immeuble(x,y):
     x,y,color_rez_chaussee = rez_chaussee(x,y)
-    for i in range(randint(1,5)):
+    for i in range(randint(1,4)):
         x,y,color_rez_chaussee = etage(x,y,color_rez_chaussee)
+    roof(x,y)
+    return x,y
 
 def quartier(x,y):
+    up()
+    goto(x,y)
+    down()
     for i in range(randint(1,5)):
         immeuble(x,y)
         up()
@@ -174,8 +193,7 @@ def quartier(x,y):
         down()
 
 down()
-quartier(0,0)
-
+quartier(-300,0)
 done()
 
 

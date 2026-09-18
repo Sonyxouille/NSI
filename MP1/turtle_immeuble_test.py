@@ -171,7 +171,6 @@ def roof(x,y):
     goto(x+150,y)
     goto(x,y)
     end_fill()
-
     return x,y
 
 def immeuble(x,y):
