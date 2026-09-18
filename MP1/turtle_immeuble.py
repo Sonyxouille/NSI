@@ -71,7 +71,7 @@ def etage(x,y,color_rez_chaussee):
     goto(x,y)
     down()
     for i in range(3):
-        element = randint(0,4)
+        element = randint(0,3)
         if element == 0:
             window_with_barrier(x,y)
         elif element == 1 or element == 2:
@@ -114,7 +114,7 @@ def door2(x,y,color_rez_chaussee):
     goto(x+30,y)
     goto(x+30,y+40)
     setheading(90)
-    circle(15,206)
+    circle(15,190)
     goto(x,y+40)
     goto(x,y)
     x,y = x,y
