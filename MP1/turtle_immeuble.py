@@ -28,9 +28,14 @@ def rez_chaussee(x,y):
     shuffle(rez_de_chaussee)
     for element in rez_de_chaussee:
         if element == 'window':
-            window(x,y)
-            x += 42.5
-            goto(x,y)
+            if randint(0,1) == 0:
+                window1(x,y)
+                x += 42.5
+                goto(x,y)
+            else:
+                window2(x,y)
+                x += 42.5
+                goto(x,y)
         elif element == 'doors':
             if randint(0,1) == 0:
                 door1(x,y,color_rez_chaussee)
@@ -66,10 +71,13 @@ def etage(x,y,color_rez_chaussee):
     goto(x,y)
     down()
     for i in range(3):
-        if randint(0,2) == 1:
+        element = randint(0,4)
+        if element == 0:
             window_with_barrier(x,y)
+        elif element == 1 or element == 2:
+            window1(x,y)
         else:
-            window(x,y)
+            window2(x,y)
         x += 42.5
         goto(x,y)
     up()
@@ -113,7 +121,7 @@ def door2(x,y,color_rez_chaussee):
     end_fill()
     return x,y
 
-def window(x,y):
+def window1(x,y):
     up()
     goto(x,y+20)
     down()
@@ -130,6 +138,18 @@ def window(x,y):
     end_fill()
     up()
     x,y = x,y
+    return x,y
+
+def window2(x,y):
+    up()
+    goto(x+30,y+35)
+    down()
+    fillcolor('lightblue')
+    begin_fill()
+    setheading(90)
+    circle(15,360)
+    end_fill()
+    up()
     return x,y
 
 def window_with_barrier(x,y):
