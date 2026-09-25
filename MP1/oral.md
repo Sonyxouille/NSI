@@ -17,7 +17,7 @@ Tenir 10 minutes à l'oral
 ## **Comment on présente :**
 
 - diaporama minimaliste
-- code à montrer directement (clé usb)
+- code à montrer directement -> vs code (clé usb)
 - typst -> pdf (clé usb)
   
 ## **Bonus**
