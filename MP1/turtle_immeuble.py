@@ -304,3 +304,5 @@ fond()
 cloud()
 quartier(-300,-100)
 done()
+
+#FAIT LE PROTOTYPAGE (dire ce que sont tel et tel fonction)
