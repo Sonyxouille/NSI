@@ -143,20 +143,6 @@ def roof2(x,y):
     x,y = x,y+60
     goto(x,y)
     down()
-    setheading(90)
-    fillcolor('brown')
-    begin_fill()
-    goto(x+150,y)
-    circle(80,180)
-    goto(x,y)
-    end_fill()
-    return x,y
-
-def roof3(x,y):
-    up()
-    x,y = x,y+60
-    goto(x,y)
-    down()
     pencolor('black')
     pensize(6)
     goto(x-5,y)
@@ -246,31 +232,49 @@ def immeuble(x,y):
     x,y,color_rez_chaussee = rez_chaussee(x,y)
     for i in range(randint(2,4)):
         x,y,color_rez_chaussee = etage(x,y,color_rez_chaussee)
-    roof = randint(0,2)
-    if roof == 1:
+    roof = randint(0,1)
+    if roof == 0:
         roof1(x,y)
-    elif roof == 2:
-        roof2(x,y)
     else:
-        roof3(x,y)
+        roof2(x,y)
     return x,y
 
 def quartier(x,y):
     up()
     goto(x,y)
+    x1,y1 = x,y
     down()
-    for i in range(randint(1,5)):
+    nb_immeuble = randint(1,5)
+    for i in range(nb_immeuble):
         immeuble(x,y)
         up()
         x += 160
-        y = 0
+        y = y1
         goto(x,y)
         down()
+    up()
+    goto(x1-20,y1)
+    pensize(2)
+    down()
+    goto(x1+(160*nb_immeuble),y1)
+    pensize(1)
+    
+def fond():
+    up()
+    goto(1000,1000)
+    fillcolor('deepskyblue3')
+    begin_fill()
+    goto(1000,-1000)
+    goto(-1000,-1000)
+    goto(-1000,1000)
+    goto(1000,1000)
+    end_fill()
 
 down()
 hideturtle()
-speed(10000)
-quartier(-300,0)
+speed(100000)
+fond()
+quartier(-300,-100)
 done()
 
 
