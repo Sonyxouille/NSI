@@ -6,84 +6,6 @@ setup(1920,1080,0,0)
 colors=['blue','red','green']
 rez_de_chaussee = ['window','doors','window']
 
-def rez_chaussee(x,y):
-    x_base = x
-    y_base = y
-    color_rez_chaussee = choice(colors)
-    fillcolor(color_rez_chaussee)
-    begin_fill()
-    pencolor('black')
-    goto(x,y+60)
-    pencolor('black')
-    goto(x+140,y+60)
-    pencolor('black')
-    goto(x+140,y)
-    pencolor('black')
-    goto(x,y)
-    end_fill()
-    up()
-    x += 12.5
-    goto(x,y)
-    down()
-    shuffle(rez_de_chaussee)
-    for element in rez_de_chaussee:
-        if element == 'window':
-            if randint(0,1) == 0:
-                window1(x,y)
-                x += 42.5
-                goto(x,y)
-            else:
-                window2(x,y)
-                x += 42.5
-                goto(x,y)
-        elif element == 'doors':
-            if randint(0,1) == 0:
-                door1(x,y,color_rez_chaussee)
-                x += 42.5
-                goto(x,y)
-            else:
-                door2(x,y,color_rez_chaussee)
-                x += 42.5
-                goto(x,y)
-    up()
-    goto(x_base,y_base)
-    x,y = x_base,y_base
-    return x,y,color_rez_chaussee
-
-def etage(x,y,color_rez_chaussee):
-    x,y = x,y+60
-    x_base = x
-    y_base = y
-    goto(x,y)
-    fillcolor(color_rez_chaussee)
-    begin_fill()
-    pencolor('black')
-    goto(x,y+60)
-    pencolor('black')
-    goto(x+140,y+60)
-    pencolor('black')
-    goto(x+140,y)
-    pencolor('black')
-    goto(x,y)
-    end_fill()
-    up()
-    x += 12.5
-    goto(x,y)
-    down()
-    for i in range(3):
-        element = randint(0,3)
-        if element == 0:
-            window_with_barrier(x,y)
-        elif element == 1 or element == 2:
-            window1(x,y)
-        else:
-            window2(x,y)
-        x += 42.5
-        goto(x,y)
-    up()
-    x,y = x_base,y_base
-    return x,y,color_rez_chaussee
-
 def door1(x,y,color_rez_chaussee):
     colors_door = []
     for color in colors:
@@ -241,6 +163,84 @@ def roof3(x,y):
     goto(x+145,y)
     pensize(1)
     return x,y
+
+def rez_chaussee(x,y):
+    x_base = x
+    y_base = y
+    color_rez_chaussee = choice(colors)
+    fillcolor(color_rez_chaussee)
+    begin_fill()
+    pencolor('black')
+    goto(x,y+60)
+    pencolor('black')
+    goto(x+140,y+60)
+    pencolor('black')
+    goto(x+140,y)
+    pencolor('black')
+    goto(x,y)
+    end_fill()
+    up()
+    x += 12.5
+    goto(x,y)
+    down()
+    shuffle(rez_de_chaussee)
+    for element in rez_de_chaussee:
+        if element == 'window':
+            if randint(0,1) == 0:
+                window1(x,y)
+                x += 42.5
+                goto(x,y)
+            else:
+                window2(x,y)
+                x += 42.5
+                goto(x,y)
+        elif element == 'doors':
+            if randint(0,1) == 0:
+                door1(x,y,color_rez_chaussee)
+                x += 42.5
+                goto(x,y)
+            else:
+                door2(x,y,color_rez_chaussee)
+                x += 42.5
+                goto(x,y)
+    up()
+    goto(x_base,y_base)
+    x,y = x_base,y_base
+    return x,y,color_rez_chaussee
+
+def etage(x,y,color_rez_chaussee):
+    x,y = x,y+60
+    x_base = x
+    y_base = y
+    goto(x,y)
+    fillcolor(color_rez_chaussee)
+    begin_fill()
+    pencolor('black')
+    goto(x,y+60)
+    pencolor('black')
+    goto(x+140,y+60)
+    pencolor('black')
+    goto(x+140,y)
+    pencolor('black')
+    goto(x,y)
+    end_fill()
+    up()
+    x += 12.5
+    goto(x,y)
+    down()
+    for i in range(3):
+        element = randint(0,3)
+        if element == 0:
+            window_with_barrier(x,y)
+        elif element == 1 or element == 2:
+            window1(x,y)
+        else:
+            window2(x,y)
+        x += 42.5
+        goto(x,y)
+    up()
+    x,y = x_base,y_base
+    return x,y,color_rez_chaussee
 
 def immeuble(x,y):
     x,y,color_rez_chaussee = rez_chaussee(x,y)
