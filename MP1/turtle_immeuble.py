@@ -276,5 +276,3 @@ speed(100000)
 fond()
 quartier(-300,-100)
 done()
-
-
