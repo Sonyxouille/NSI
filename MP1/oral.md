@@ -20,7 +20,3 @@ Tenir 10 minutes à l'oral
 - code à montrer directement -> vs code (clé usb)
 - typst -> pdf (clé usb)
   
-## **Bonus**
-
-- Evolution des commits
-- READ ME sur GitHub (Expliquer ce qu'on à fait dedans)

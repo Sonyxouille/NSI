@@ -323,9 +323,12 @@ def world():
     """Combine les fonctions fond, nuage et quartier pour pouvoir faire un monde correct"""
     x,y = 0, 260
     fond()
-    for i in range(10):
-        x,y = randint(-350,300),randint(240,270)
+    for i in range(5):
+        x,y = randint(0,300),randint(240,270)
         cloud(x,y)
+    for i in range(5):
+            x,y = randint(-300,0),randint(240,270)
+            cloud(x,y)
     quartier(-300,-100)
 
 down()
