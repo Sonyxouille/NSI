@@ -324,10 +324,10 @@ def world():
     x,y = 0, 260
     fond()
     for i in range(5):
-        x,y = randint(0,300),randint(240,270)
+        x,y = randint(0,600),randint(240,270)
         cloud(x,y)
     for i in range(5):
-            x,y = randint(-300,0),randint(240,270)
+            x,y = randint(-600,0),randint(240,270)
             cloud(x,y)
     quartier(-300,-100)
 
