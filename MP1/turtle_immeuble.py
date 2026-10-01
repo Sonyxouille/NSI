@@ -7,6 +7,7 @@ colors=['blue','red','green']
 rez_de_chaussee = ['window','doors','window']
 
 def door1(x,y,color_rez_chaussee):
+    """Permet de faire le premier type de porte qui est un simple rectangle"""
     colors_door = []
     for color in colors:
         if color != color_rez_chaussee:
@@ -26,6 +27,7 @@ def door1(x,y,color_rez_chaussee):
     return x,y
 
 def door2(x,y,color_rez_chaussee):
+    """Permet de faire le deuxième type de porte qui a le desus arrondi"""
     colors_door = []
     for color in colors:
         if color != color_rez_chaussee:
@@ -44,6 +46,7 @@ def door2(x,y,color_rez_chaussee):
     return x,y
 
 def window1(x,y):
+    """Permet de faire le premier type de fenêtre qui est un simple carré"""
     up()
     goto(x,y+20)
     down()
@@ -63,6 +66,7 @@ def window1(x,y):
     return x,y
 
 def window2(x,y):
+    """Permet de faire le deuxième type de fenêtre qui est un cercle"""
     up()
     goto(x+30,y+35)
     down()
@@ -75,6 +79,10 @@ def window2(x,y):
     return x,y
 
 def window_with_barrier(x,y):
+    """
+    Permet de faire le troisième type de fenêtre qui est un rectangle accompagné de barreaux
+    comme une sorte de balcon
+    """
     up()
     goto(x,y)
     down()
@@ -125,6 +133,7 @@ def window_with_barrier(x,y):
     return x,y
 
 def roof1(x,y):
+    """Permet de faire le premier type de toit qui est un triangle"""
     up()
     x,y = x,y+60
     goto(x,y)
@@ -139,6 +148,10 @@ def roof1(x,y):
     return x,y
 
 def roof2(x,y):
+    """
+    Permet de faire le deuxième type de toit qui est juste une barre avec une taille de
+    stylo plus grande    
+    """
     up()
     x,y = x,y+60
     goto(x,y)
@@ -151,6 +164,7 @@ def roof2(x,y):
     return x,y
 
 def rez_chaussee(x,y):
+    """Permet de combiner les différentes portes et fenêtes pour faire le rez de chaussée"""
     x_base = x
     y_base = y
     color_rez_chaussee = choice(colors)
@@ -195,6 +209,7 @@ def rez_chaussee(x,y):
     return x,y,color_rez_chaussee
 
 def etage(x,y,color_rez_chaussee):
+    """Fait l'aléatoire des différentes fenêtres par dessus un rectangle pour pouvoir faire un étage"""
     x,y = x,y+60
     x_base = x
     y_base = y
@@ -229,6 +244,9 @@ def etage(x,y,color_rez_chaussee):
     return x,y,color_rez_chaussee
 
 def immeuble(x,y):
+    """
+    Assemble les fonctions rez_chaussee et etage tout en ajoutant un toit en haut pour faire un immeuble
+    """
     x,y,color_rez_chaussee = rez_chaussee(x,y)
     for i in range(randint(2,4)):
         x,y,color_rez_chaussee = etage(x,y,color_rez_chaussee)
@@ -240,6 +258,7 @@ def immeuble(x,y):
     return x,y
 
 def quartier(x,y):
+    """Permet de faire plusieurs fois la fonction immeuble"""
     up()
     goto(x,y)
     x1,y1 = x,y
@@ -260,6 +279,7 @@ def quartier(x,y):
     pensize(1)
     
 def fond():
+    """Permet de dessiner le fond du quartier"""
     up()
     goto(1000,1000)
     fillcolor('deepskyblue3')
@@ -270,11 +290,10 @@ def fond():
     goto(1000,1000)
     end_fill()
 
-def cloud():
+def cloud(x,y):
+    """Permet de faire un nuage dans le ciel"""
     up()
     h = heading()
-    x = 0
-    y = 280
     goto(x,y)
     down()
     fillcolor('white')
@@ -285,24 +304,34 @@ def cloud():
         circle(15,90)
         angle += 15
         setheading(angle)
+    end_fill()
     angle = 90
     up()
     goto(x,y)
     setheading(180)
     angle = 90
     down()
+    fillcolor('white')
+    begin_fill()
     for i in range(0,4):
         circle(-15,90)
         angle -= 15
         setheading(angle)
     end_fill()
 
+def world():
+    """Combine les fonctions fond, nuage et quartier pour pouvoir faire un monde correct"""
+    x,y = 0, 260
+    fond()
+    for i in range(10):
+        x,y = randint(-350,300),randint(240,270)
+        cloud(x,y)
+    quartier(-300,-100)
+
 down()
 hideturtle()
 speed(100000)
-fond()
-cloud()
-quartier(-300,-100)
+world()
 done()
 
 #FAIT LE PROTOTYPAGE (dire ce que sont tel et tel fonction)
