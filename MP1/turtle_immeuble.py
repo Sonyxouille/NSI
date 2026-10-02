@@ -305,7 +305,6 @@ def cloud(x,y):
         angle += 15
         setheading(angle)
     end_fill()
-    angle = 90
     up()
     goto(x,y)
     setheading(180)
@@ -322,10 +321,10 @@ def cloud(x,y):
 def world(x,y):
     """Combine les fonctions fond, nuage et quartier pour pouvoir faire un monde correct"""
     fond()
-    for i in range(5):
+    for i in range(4):
         x,y = randint(0,600),randint(240,270)
         cloud(x,y)
-    for i in range(5):
+    for i in range(4):
             x,y = randint(-600,0),randint(240,270)
             cloud(x,y)
     quartier(-300,-100)
