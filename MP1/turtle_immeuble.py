@@ -319,9 +319,8 @@ def cloud(x,y):
         setheading(angle)
     end_fill()
 
-def world():
+def world(x,y):
     """Combine les fonctions fond, nuage et quartier pour pouvoir faire un monde correct"""
-    x,y = 0, 260
     fond()
     for i in range(5):
         x,y = randint(0,600),randint(240,270)
@@ -334,7 +333,7 @@ def world():
 down()
 hideturtle()
 speed(100000)
-world()
+world(0,260)
 done()
 
 #FAIT LE PROTOTYPAGE (dire ce que sont tel et tel fonction)
