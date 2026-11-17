@@ -35,30 +35,3 @@ Déroulement de l'épreuve :
 * 20 minutes de préparation (faire une fiche pour s'aider)
 * 10 min de "réponse" à la question
 * 10 min d'échange avec le jury
-
-
-
-
-
-Exo 1
-
-Manque parathèse donc SyntaxError
-
-
-
-Exo 2
-
-Else et print sur la même colonne donc IndentationError
-
-
-
-Exo 3
-
-Cherche i de 10 mais n'existe pas donc IndexError
-
-
-
-Exo 4
-
-Fibonacci
-
